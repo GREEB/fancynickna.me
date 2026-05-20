@@ -1,5 +1,7 @@
 import type { RequestHandler } from './$types';
 
+export const prerender = true;
+
 export const GET: RequestHandler = async ({ url }) => {
 	const origin = url.origin;
 	const xml = `<?xml version="1.0" encoding="UTF-8"?>

@@ -21,7 +21,10 @@ const config = {
 			$lib: 'src/lib'
 		},
 		prerender: {
-			handleHttpError: 'warn'
+			handleHttpError: 'warn',
+			// Make `url.origin` resolve to the production URL during prerender so
+			// sitemap files generated at build time have correct absolute URLs.
+			origin: 'https://fancynickna.me'
 		}
 	}
 };
