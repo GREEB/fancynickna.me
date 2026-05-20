@@ -1,16 +1,25 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import TopBar from '$lib/components/TopBar.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	import { lookalikesFor, specialPacks } from '$lib/lookalikes';
 	import DecorationStep from '$lib/components/DecorationStep.svelte';
+	import { nickName } from '$lib/stores/nick';
 
 	// User types into a normal input. We track the caret position so we can show
 	// suggestions for the character directly to the left of the cursor — i.e. the
 	// last character they typed or selected. Clicking a suggestion replaces that
 	// character (and pops the next typed character into focus).
 	let inputEl: HTMLInputElement;
-	let text = $state('Maya');
+	let text = $state('');
+	const unsubText = nickName.subscribe((v) => {
+		text = v;
+	});
+	$effect(() => {
+		nickName.set(text);
+	});
+	onDestroy(() => unsubText());
 	let cursorPos = $state(4);
 	let activePackId = $state<string | null>(null);
 
