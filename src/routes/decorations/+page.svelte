@@ -1,10 +1,17 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import TopBar from '$lib/components/TopBar.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	import { decorations, decorationCategories, applyDecoration } from '$lib/decorations';
+	import { nickName } from '$lib/stores/nick';
 
-	let name = $state('Maya');
+	let name = $state('');
+	const unsubName = nickName.subscribe((v) => (name = v));
+	$effect(() => {
+		nickName.set(name);
+	});
+	onDestroy(() => unsubName());
 	let category = $state<(typeof decorationCategories)[number]['id'] | 'all'>('all');
 	let copiedId = $state<string | null>(null);
 
