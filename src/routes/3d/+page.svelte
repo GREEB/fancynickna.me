@@ -22,7 +22,7 @@
 	let bevelThickness = $state(3);
 
 	// Material
-	let materialKey = $state<keyof typeof MATERIALS>('neon');
+	let materialKey = $state<keyof typeof MATERIALS>('chrome');
 	let materialColor = $state('#C8FF3D');
 
 	// Lighting
@@ -661,7 +661,7 @@
 		bevelEnabled = true;
 		bevelSize = 2;
 		bevelThickness = 3;
-		materialKey = 'neon';
+		materialKey = 'chrome';
 		materialColor = '#C8FF3D';
 		lightingKey = 'studio';
 		bgType = 'solid';
