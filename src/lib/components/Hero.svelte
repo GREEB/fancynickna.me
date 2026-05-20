@@ -2,13 +2,10 @@
 	interface Props {
 		name: string;
 		styleCount: number;
-		decoCount: number;
-		showCount?: boolean;
 		onInput: (value: string) => void;
 		onClear: () => void;
 	}
-	let { name = $bindable(''), styleCount, decoCount, showCount = true, onInput, onClear }: Props =
-		$props();
+	let { name = $bindable(''), styleCount, onInput, onClear }: Props = $props();
 </script>
 
 <section
@@ -84,33 +81,6 @@
 			>
 		{/if}
 	</div>
-
-	{#if showCount}
-		<div
-			class="flex flex-wrap"
-			style="gap: clamp(20px, 4vw, 56px); margin-top: 36px;"
-		>
-			{#each [
-				{ n: `${styleCount}`, l: 'styles' },
-				{ n: `${decoCount}`, l: 'deco packs' },
-				{ n: '32', l: 'char limit' },
-				{ n: '∞', l: 'free uses' }
-			] as c (c.l)}
-				<div>
-					<div
-						style="font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); line-height: 1;"
-					>
-						{c.n}
-					</div>
-					<div
-						style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-soft); margin-top: 6px;"
-					>
-						{c.l}
-					</div>
-				</div>
-			{/each}
-		</div>
-	{/if}
 </section>
 
 <style>

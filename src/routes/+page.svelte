@@ -86,7 +86,6 @@
 	<Hero
 		bind:name
 		styleCount={styles.length}
-		decoCount={Object.keys(decoPacks).length}
 		onInput={(v) => (name = v)}
 		onClear={() => (name = '')}
 	/>
