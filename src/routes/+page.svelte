@@ -9,10 +9,19 @@
 	import FAQ from '$lib/components/FAQ.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	import { styles, decoPacks } from '$lib/fancyText';
+	import { nickName, nickStyleId } from '$lib/stores/nick';
 
-	// Start empty — the empty state with the placeholder + bouncing input cue
-	// makes the "type your name here" affordance obvious.
+	// Name lives in a persistent store so it follows the user to other pages
+	// (and the DockedBar shows it across navigations). Use $state mirror so
+	// Hero's `$bindable` prop keeps working without store gymnastics in the
+	// child component.
 	let name = $state('');
+	const unsubName = nickName.subscribe((v) => (name = v));
+	$effect(() => {
+		nickName.set(name);
+	});
+	onDestroy(() => unsubName());
+
 	let copiedId = $state<string | null>(null);
 	let tick = $state(0);
 	const decoKey: keyof typeof decoPacks = 'none';
@@ -29,6 +38,7 @@
 		try {
 			await navigator.clipboard.writeText(value);
 			copiedId = id;
+			nickStyleId.set(id); // remember the style so the dock previews it on other pages
 			toast(`copied "${styleName}"`);
 			setTimeout(() => {
 				if (copiedId === id) copiedId = null;

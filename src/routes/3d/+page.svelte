@@ -2,6 +2,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import TopBar from '$lib/components/TopBar.svelte';
+	import { nickName } from '$lib/stores/nick';
 	import type * as THREE_T from 'three';
 
 	// =============================================================================
@@ -11,7 +12,17 @@
 	let mobilePanelOpen = $state(false);
 	let ready = $state(false);
 
+	// Shared name from the DockedBar store — falls back to 'fancy' if empty so
+	// the 3D scene always renders something.
 	let text = $state('fancy');
+	const unsubText = nickName.subscribe((v) => {
+		text = v || 'fancy';
+	});
+	$effect(() => {
+		// Only push real edits back to the store, never the 'fancy' fallback.
+		if (text && text !== 'fancy') nickName.set(text);
+	});
+	onDestroy(() => unsubText());
 	let fontKey = $state<keyof typeof FONTS>('helvetiker_bold');
 
 	// Geometry
