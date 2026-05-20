@@ -1,25 +1,25 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import { nickName, nickStyleId } from '$lib/stores/nick';
 	import { styles } from '$lib/fancyText';
 
-	let editing = $state(false);
 	let dismissed = $state(false);
 
 	const styleById = $derived(new Map(styles.map((s) => [s.id, s])));
-	// Reactive snapshot of the stores
+
 	let name = $state('');
 	let styleId = $state('');
 	const unsubName = nickName.subscribe((v) => (name = v));
 	const unsubStyle = nickStyleId.subscribe((v) => (styleId = v));
-	import { onDestroy } from 'svelte';
 	onDestroy(() => {
 		unsubName();
 		unsubStyle();
 	});
 
 	const chosenStyle = $derived(styleId ? styleById.get(styleId) : undefined);
-	const styled = $derived(() => {
+
+	function styledValue(): string {
 		const n = name.trim() || 'YourName';
 		if (!chosenStyle) return n;
 		try {
@@ -27,14 +27,13 @@
 		} catch {
 			return n;
 		}
-	});
+	}
 
 	const hasContent = $derived(name.trim().length > 0 || styleId !== '');
 
 	async function copyStyled() {
-		const value = styled();
 		try {
-			await navigator.clipboard.writeText(value);
+			await navigator.clipboard.writeText(styledValue());
 			toast(`copied "${chosenStyle?.name ?? 'plain'}"`);
 		} catch {
 			toast('copy failed');
@@ -44,11 +43,10 @@
 	function clearAll() {
 		nickName.set('');
 		nickStyleId.set('');
-		editing = false;
 	}
 
-	function updateName(v: string) {
-		nickName.set(v);
+	function onInput(e: Event) {
+		nickName.set((e.currentTarget as HTMLInputElement).value);
 	}
 </script>
 
@@ -58,7 +56,7 @@
 			type="button"
 			class="dock-tag"
 			title={chosenStyle ? `style: ${chosenStyle.name}` : 'no style — pick one on /styles or the home grid'}
-			onclick={() => (editing = !editing)}
+			onclick={copyStyled}
 		>
 			{#if chosenStyle}
 				<span class="dock-tag-label">{chosenStyle.name}</span>
@@ -67,29 +65,15 @@
 			{/if}
 		</button>
 
-		{#if editing}
-			<input
-				class="dock-input"
-				value={name}
-				placeholder="your name"
-				maxlength="40"
-				autocomplete="off"
-				spellcheck="false"
-				oninput={(e) => updateName((e.currentTarget as HTMLInputElement).value)}
-				onkeydown={(e) => e.key === 'Enter' && (editing = false)}
-				onblur={() => (editing = false)}
-				autofocus
-			/>
-		{:else}
-			<button
-				type="button"
-				class="dock-preview"
-				onclick={copyStyled}
-				title="click to copy"
-			>
-				{styled()}
-			</button>
-		{/if}
+		<input
+			class="dock-input"
+			value={name}
+			placeholder="your name"
+			maxlength="40"
+			autocomplete="off"
+			spellcheck="false"
+			oninput={onInput}
+		/>
 
 		<button type="button" class="dock-btn" onclick={copyStyled} title="copy">copy</button>
 		<button type="button" class="dock-btn dock-btn-icon" onclick={clearAll} title="clear">×</button>
@@ -124,8 +108,7 @@
 
 	.dock-tag {
 		background: var(--accent);
-		/* Tag bg is always the bright accent, so foreground stays pinned to ink
-		   regardless of theme — same trick as the marquee. */
+		/* Accent bg → pin fg to ink regardless of theme so it stays readable */
 		color: #0e0e10;
 		border: 1.5px solid #0e0e10;
 		border-radius: 999px;
@@ -146,23 +129,6 @@
 		opacity: 0.6;
 	}
 
-	.dock-preview {
-		flex: 1;
-		min-width: 0;
-		background: transparent;
-		border: none;
-		padding: 6px 6px;
-		font-family: serif;
-		font-size: clamp(16px, 1.9vw, 22px);
-		line-height: 1.1;
-		text-align: left;
-		color: var(--fg);
-		cursor: pointer;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-
 	.dock-input {
 		flex: 1;
 		min-width: 0;
@@ -173,6 +139,10 @@
 		font-family: var(--font-sans);
 		font-size: 16px;
 		color: var(--fg);
+	}
+	.dock-input::placeholder {
+		color: var(--fg-soft);
+		opacity: 0.6;
 	}
 
 	.dock-btn {
