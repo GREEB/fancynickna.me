@@ -4,14 +4,33 @@
 	import TopBar from '$lib/components/TopBar.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	import { decorations, decorationCategories, applyDecoration } from '$lib/decorations';
-	import { nickName } from '$lib/stores/nick';
+	import { nickName, nickStyleId } from '$lib/stores/nick';
+	import { styles } from '$lib/fancyText';
 
 	let name = $state('');
+	let styleId = $state('');
 	const unsubName = nickName.subscribe((v) => (name = v));
+	const unsubStyle = nickStyleId.subscribe((v) => (styleId = v));
 	$effect(() => {
 		nickName.set(name);
 	});
-	onDestroy(() => unsubName());
+	onDestroy(() => {
+		unsubName();
+		unsubStyle();
+	});
+
+	const styleById = $derived(new Map(styles.map((s) => [s.id, s])));
+	// Decoration wraps the styled output if a style is picked, otherwise the raw name
+	const effectiveName = $derived.by(() => {
+		const raw = name || 'Maya';
+		const s = styleId ? styleById.get(styleId) : undefined;
+		if (!s) return raw;
+		try {
+			return s.fn(raw);
+		} catch {
+			return raw;
+		}
+	});
 	let category = $state<(typeof decorationCategories)[number]['id'] | 'all'>('all');
 	let copiedId = $state<string | null>(null);
 
@@ -132,7 +151,7 @@
 		style="padding: 0 clamp(20px, 4vw, 56px) 80px; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));"
 	>
 		{#each filtered as d (d.id)}
-			{@const value = applyDecoration(name || 'Maya', d)}
+			{@const value = applyDecoration(effectiveName, d)}
 			{@const isCopied = copiedId === d.id}
 			<button
 				type="button"

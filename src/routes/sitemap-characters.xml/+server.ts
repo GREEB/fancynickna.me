@@ -1,4 +1,4 @@
-import { sitemapCharacters } from '$lib/server/data';
+import { sitemapCharacters } from '$lib/server/data/sitemap-chars';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {

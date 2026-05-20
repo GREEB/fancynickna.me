@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { findBlock, charactersInBlock } from '$lib/server/data';
+import { findBlock } from '$lib/server/data/blocks';
+import { charactersInBlock } from '$lib/server/data/characters';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

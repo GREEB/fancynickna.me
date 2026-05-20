@@ -1,10 +1,9 @@
-import { sitemapGames } from '$lib/server/data';
+import { sitemapGames } from '$lib/server/data/games';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {
 	const origin = url.origin;
 	const rows = sitemapGames();
-	// After JSON serialization the updatedAt timestamps are ISO strings already.
 	const urls = rows
 		.map((g) => `<url><loc>${origin}/games/${g.slug}</loc><lastmod>${g.updatedAt}</lastmod></url>`)
 		.join('\n');

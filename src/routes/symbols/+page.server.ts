@@ -1,4 +1,4 @@
-import { listBlocks, getPreviewByBlock } from '$lib/server/data';
+import { listBlocks, getPreviewByBlock } from '$lib/server/data/blocks';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {

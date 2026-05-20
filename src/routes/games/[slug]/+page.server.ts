@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { findGameBySlug, relatedGames } from '$lib/server/data';
+import { findGameBySlug, relatedGames } from '$lib/server/data/games';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

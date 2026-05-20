@@ -1,4 +1,4 @@
-import { searchGames } from '$lib/server/data';
+import { searchGames } from '$lib/server/data/games';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {

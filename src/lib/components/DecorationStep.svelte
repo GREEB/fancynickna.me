@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import { decorations, decorationCategories, applyDecoration } from '$lib/decorations';
+	import { nickStyleId } from '$lib/stores/nick';
+	import { styles } from '$lib/fancyText';
 
 	interface Props {
 		name: string;
@@ -14,13 +17,29 @@
 	let copiedId = $state<string | null>(null);
 	let expanded = $state(false);
 
+	// Apply the globally-picked style to the name before wrapping it with the
+	// decoration. If no style is picked, the raw name is used.
+	let styleId = $state('');
+	const unsubStyle = nickStyleId.subscribe((v) => (styleId = v));
+	onDestroy(() => unsubStyle());
+	const styleById = $derived(new Map(styles.map((s) => [s.id, s])));
+
 	const filtered = $derived(
 		category === 'all' ? decorations : decorations.filter((d) => d.category === category)
 	);
 
 	const visible = $derived(expanded ? filtered : filtered.slice(0, INITIAL));
 
-	const effectiveName = $derived(name || 'Maya');
+	const effectiveName = $derived.by(() => {
+		const raw = name || 'Maya';
+		const s = styleId ? styleById.get(styleId) : undefined;
+		if (!s) return raw;
+		try {
+			return s.fn(raw);
+		} catch {
+			return raw;
+		}
+	});
 
 	function pickCategory(c: typeof category) {
 		category = c;

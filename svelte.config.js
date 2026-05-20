@@ -10,7 +10,12 @@ const config = {
 		// the right choice here — the bundled JSON data lives in the function
 		// bundle and we get full SSR semantics.
 		adapter: adapter({
-			runtime: 'nodejs20.x'
+			runtime: 'nodejs20.x',
+			// One serverless function per route. Without this, every page goes
+			// through one big function whose bundle contains every JSON we ship —
+			// so /symbols (which only needs blocks.json, ~50KB) pays the cost of
+			// parsing characters.json (19MB) on every cold start.
+			split: true
 		}),
 		alias: {
 			$lib: 'src/lib'

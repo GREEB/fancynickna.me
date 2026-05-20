@@ -1,5 +1,5 @@
 import { error, redirect } from '@sveltejs/kit';
-import { findCharacter, siblingCharacters } from '$lib/server/data';
+import { findCharacter, siblingCharacters } from '$lib/server/data/characters';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -7,7 +7,6 @@ export const load: PageServerLoad = async ({ params }) => {
 	const cp = Number.parseInt(raw, 16);
 	if (!Number.isFinite(cp) || cp < 0 || cp > 0x10ffff) throw error(404, 'invalid codepoint');
 
-	// Canonicalize the URL to lowercase hex with no leading zeros (`/c/2665`)
 	const canonical = cp.toString(16);
 	if (params.code !== canonical) throw redirect(301, `/c/${canonical}`);
 
