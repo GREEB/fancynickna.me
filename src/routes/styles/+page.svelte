@@ -37,23 +37,23 @@
 </script>
 
 <svelte:head>
-	<title>All styles — fancynickna.me</title>
+	<title>All Fancy Text Styles | fancynickna.me</title>
 	<meta
 		name="description"
-		content="Every fancy nickname style on fancynickna.me — bold, cursive, gothic, bubble, fullwidth, small caps, glitch and more. Live preview, click to copy."
+		content="Every fancy nickname style — bold, italic, cursive, gothic, bubble, fullwidth, small caps, glitch and 30+ more. Live preview with your own name. Click any style to copy."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/styles" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://fancynickna.me/styles" />
-	<meta property="og:title" content="All styles — fancynickna.me" />
-	<meta property="og:description" content="Live preview every fancy nickname style. Click to copy." />
-	<meta property="og:image" content="https://fancynickna.me/og.png?title=all+styles&subtitle=38+fancy+text+transforms.+Live+preview." />
+	<meta property="og:title" content="All Fancy Text Styles | fancynickna.me" />
+	<meta property="og:description" content="Every fancy nickname style — bold, cursive, gothic, bubble, glitch and more. Live preview, click to copy." />
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=All+Styles&subtitle=38+fancy+text+transforms.+Live+preview." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="All styles — fancynickna.me" />
-	<meta name="twitter:description" content="Live preview every fancy nickname style. Click to copy." />
-	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=all+styles" />
+	<meta name="twitter:title" content="All Fancy Text Styles | fancynickna.me" />
+	<meta name="twitter:description" content="38+ fancy nickname styles. Live preview, click to copy." />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=All+Styles" />
 </svelte:head>
 
 <TopBar />

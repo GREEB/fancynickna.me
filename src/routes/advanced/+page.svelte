@@ -100,26 +100,26 @@
 </script>
 
 <svelte:head>
-	<title>Advanced maker — fancynickna.me</title>
+	<title>Advanced Nickname Maker | fancynickna.me</title>
 	<meta
 		name="description"
-		content="Type your nickname normally and see Unicode lookalike suggestions for every letter — Latin variants, Cyrillic, Greek, runic, sparkle decorations and more. Click a suggestion to swap that letter."
+		content="Build a nickname letter by letter. Each character gets Unicode lookalike suggestions — Latin variants, Cyrillic, Greek, runic, math, and sparkle decorations. Click a suggestion to swap that letter."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/advanced" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://fancynickna.me/advanced" />
-	<meta property="og:title" content="Advanced nickname maker — fancynickna.me" />
+	<meta property="og:title" content="Advanced Nickname Maker | fancynickna.me" />
 	<meta
 		property="og:description"
-		content="Type a nickname, swap any letter for a fancy Unicode variant."
+		content="Build a nickname letter by letter — Unicode lookalikes for every character."
 	/>
-	<meta property="og:image" content="https://fancynickna.me/og.png?title=advanced+maker&subtitle=Pick+every+letter+from+all+of+Unicode." />
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=Advanced+Maker&subtitle=Pick+every+letter+from+all+of+Unicode." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Advanced nickname maker — fancynickna.me" />
-	<meta name="twitter:description" content="Type a nickname, swap any letter for a fancy Unicode variant." />
-	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=advanced+maker" />
+	<meta name="twitter:title" content="Advanced Nickname Maker | fancynickna.me" />
+	<meta name="twitter:description" content="Build a nickname letter by letter — Unicode lookalikes for every character." />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=Advanced+Maker" />
 </svelte:head>
 
 <TopBar />

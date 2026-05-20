@@ -686,23 +686,23 @@
 </script>
 
 <svelte:head>
-	<title>3D text generator — fancynickna.me</title>
+	<title>3D Nickname Renderer | fancynickna.me</title>
 	<meta
 		name="description"
-		content="Render your nickname as 3D extruded text with chrome, gold, neon or glass materials. Orbit the camera and export at PFP, Instagram or 4K wallpaper resolutions — with bg or transparent."
+		content="Render your nickname as 3D extruded text with chrome, gold, neon or glass materials. Orbit the camera and export at PFP, Instagram or 4K wallpaper resolutions — with background or transparent."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/3d" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://fancynickna.me/3d" />
-	<meta property="og:title" content="3D text generator — fancynickna.me" />
-	<meta property="og:description" content="3D nickname renderer with chrome, gold, neon and glass materials. Export PFPs and wallpapers up to 4K." />
-	<meta property="og:image" content="https://fancynickna.me/og.png?title=3D+text&subtitle=Chrome%2C+gold%2C+neon%2C+glass.+Export+PFPs+and+wallpapers." />
+	<meta property="og:title" content="3D Nickname Renderer | fancynickna.me" />
+	<meta property="og:description" content="3D nickname text with chrome, gold, neon and glass materials. Export PFPs and wallpapers up to 4K." />
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=3D+Renderer&subtitle=Chrome%2C+gold%2C+neon%2C+glass.+Export+PFPs+and+wallpapers." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="3D text generator — fancynickna.me" />
-	<meta name="twitter:description" content="3D nickname renderer. Export PFPs and wallpapers up to 4K." />
-	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=3D+text" />
+	<meta name="twitter:title" content="3D Nickname Renderer | fancynickna.me" />
+	<meta name="twitter:description" content="3D nickname text — chrome, gold, neon, glass. Export PFPs and wallpapers up to 4K." />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=3D+Renderer" />
 </svelte:head>
 
 <TopBar />

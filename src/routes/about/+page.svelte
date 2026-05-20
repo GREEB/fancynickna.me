@@ -4,26 +4,26 @@
 </script>
 
 <svelte:head>
-	<title>About — fancynickna.me</title>
+	<title>About | fancynickna.me</title>
 	<meta
 		name="description"
-		content="fancynickna.me is a free fancy nickname generator. No signup, no ads, anonymous analytics only. Just type your name and copy a styled Unicode version for games and social profiles."
+		content="fancynickna.me is a free fancy nickname generator. No signup, no ads, anonymous analytics only. Type your name once, get every Unicode style — works in any game or social app."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/about" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://fancynickna.me/about" />
-	<meta property="og:title" content="About — fancynickna.me" />
+	<meta property="og:title" content="About | fancynickna.me" />
 	<meta
 		property="og:description"
 		content="Free fancy nickname generator. No signup, no ads, anonymous analytics only."
 	/>
-	<meta property="og:image" content="https://fancynickna.me/og.png?title=about&subtitle=Free.+No+signup.+No+tracking." />
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=About&subtitle=Free.+No+signup.+No+tracking." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="About — fancynickna.me" />
+	<meta name="twitter:title" content="About | fancynickna.me" />
 	<meta name="twitter:description" content="Free fancy nickname generator. No signup, no ads, anonymous analytics only." />
-	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=about" />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=About" />
 </svelte:head>
 
 <TopBar />

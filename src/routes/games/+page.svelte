@@ -6,26 +6,26 @@
 </script>
 
 <svelte:head>
-	<title>All games — fancynickna.me</title>
+	<title>Fancy Nickname Generator for Every Game | fancynickna.me</title>
 	<meta
 		name="description"
-		content="Browse fancy nickname generators for every game. Steam, mobile, web, console — find your game and style your username."
+		content="Browse per-game fancy nickname generators — Valorant, Fortnite, Roblox, Free Fire, Minecraft and hundreds more. Each page filters styles to the game's name rules. Click to copy."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/games" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://fancynickna.me/games" />
-	<meta property="og:title" content="All games — fancynickna.me" />
+	<meta property="og:title" content="Fancy Nickname Generator for Every Game | fancynickna.me" />
 	<meta
 		property="og:description"
-		content="Fancy nickname generator for every game — built-in name rule checks per title."
+		content="Per-game name rule checks. Find your game and style your username — Valorant, Fortnite, Roblox, Free Fire and more."
 	/>
-	<meta property="og:image" content="https://fancynickna.me/og.png?title=every+game&subtitle=Per-game+name+rule+checks.+Built-in+styles." />
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=Every+Game&subtitle=Per-game+name+rule+checks.+Built-in+styles." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="All games — fancynickna.me" />
-	<meta name="twitter:description" content="Fancy nickname generator for every game." />
-	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=every+game" />
+	<meta name="twitter:title" content="Fancy Nickname Generator for Every Game | fancynickna.me" />
+	<meta name="twitter:description" content="Per-game nickname generators with built-in name rule checks." />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=Every+Game" />
 </svelte:head>
 
 <TopBar />

@@ -7,8 +7,8 @@
 	const { char, siblings } = data;
 
 	const cpHex = char.codepoint.toString(16).toUpperCase();
-	const title = `${char.char} ${char.name.toLowerCase()} (U+${cpHex}) — copy & paste`;
-	const description = `${char.char} — ${char.name.toLowerCase()}. Unicode character U+${cpHex} in ${char.block ?? 'Unicode'}. Copy/paste, HTML entity ${char.htmlDec}, CSS escape ${char.cssEscape}.`;
+	const title = `${char.char} ${char.name.toLowerCase()} — U+${cpHex} | fancynickna.me`;
+	const description = `Copy and paste ${char.char} (${char.name.toLowerCase()}). Unicode character U+${cpHex} in ${char.block ?? 'Unicode'}. HTML entity ${char.htmlDec}, CSS escape ${char.cssEscape}, UTF-8 ${char.utf8Bytes}.`;
 
 	async function copy(text: string, label: string) {
 		try {
@@ -46,13 +46,13 @@
 	<meta property="og:url" content={`https://fancynickna.me/c/${char.codepoint.toString(16)}`} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content={`https://fancynickna.me/og.png?title=${encodeURIComponent(char.char)}&subtitle=${encodeURIComponent(char.name)}`} />
+	<meta property="og:image" content={`https://fancynickna.me/og.png?char=${encodeURIComponent(char.char)}&title=${encodeURIComponent(char.name.toLowerCase())}&subtitle=${encodeURIComponent(`U+${cpHex} · ${char.block ?? 'Unicode'}`)}`} />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
-	<meta name="twitter:image" content={`https://fancynickna.me/og.png?title=${encodeURIComponent(char.char)}`} />
+	<meta name="twitter:image" content={`https://fancynickna.me/og.png?char=${encodeURIComponent(char.char)}&title=${encodeURIComponent(char.name.toLowerCase())}`} />
 </svelte:head>
 
 <TopBar />

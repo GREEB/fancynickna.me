@@ -53,26 +53,26 @@
 </script>
 
 <svelte:head>
-	<title>Nickname decorations — fancynickna.me</title>
+	<title>Nickname Decorations | fancynickna.me</title>
 	<meta
 		name="description"
-		content="Premade nickname decorations — wrap your username with hearts, sparkles, gothic flourishes, kawaii faces, kingly crowns and classic MSN-era ASCII art. Click to copy with your name."
+		content="200+ ASCII decorations to wrap your nickname — hearts ♡, sparkles ✦, gothic ꧁꧂, kawaii ⋆˚࿐, crowns ♛ and MSN classics. Click to copy with your name included."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/decorations" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://fancynickna.me/decorations" />
-	<meta property="og:title" content="Nickname decorations — fancynickna.me" />
+	<meta property="og:title" content="Nickname Decorations | fancynickna.me" />
 	<meta
 		property="og:description"
-		content="200+ premade decorations to wrap your nickname — hearts, sparkles, gothic, kawaii, MSN classics."
+		content="200+ ASCII wrappers — hearts, sparkles, gothic, kawaii, MSN classics. Click to copy with your name."
 	/>
-	<meta property="og:image" content="https://fancynickna.me/og.png?title=decorations&subtitle=200%2B+ASCII+wrappers+for+your+nickname." />
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=Decorations&subtitle=200%2B+ASCII+wrappers+for+your+nickname." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Nickname decorations — fancynickna.me" />
-	<meta name="twitter:description" content="200+ premade nickname wrappers — hearts, sparkles, gothic, kawaii, MSN classics." />
-	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=decorations" />
+	<meta name="twitter:title" content="Nickname Decorations | fancynickna.me" />
+	<meta name="twitter:description" content="200+ ASCII nickname wrappers — hearts, sparkles, gothic, kawaii, MSN classics." />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=Decorations" />
 </svelte:head>
 
 <TopBar />

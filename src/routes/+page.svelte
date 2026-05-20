@@ -50,31 +50,30 @@
 </script>
 
 <svelte:head>
-	<title>fancynickna.me — fancy nickname generator (free, no signup)</title>
+	<title>Fancy Nickname Generator | fancynickna.me</title>
 	<meta
 		name="description"
-		content="Free fancy nickname generator. Type your name once, get 25+ styled Unicode versions — bold, cursive, gothic, bubble, glitch and more. Click to copy. No signup, no ads, anonymous analytics only."
+		content="Type your name once and copy 25+ styled Unicode versions — bold, cursive, gothic, bubble, glitch and more. Works in Discord, Instagram, Roblox, Fortnite and anywhere that accepts text. Free, no signup, no ads."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/" />
 	<meta name="theme-color" content="#f5f2ea" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://fancynickna.me/" />
-	<meta property="og:site_name" content="fancynickna.me" />
-	<meta property="og:title" content="fancynickna.me — fancy nickname generator" />
+	<meta property="og:title" content="Fancy Nickname Generator | fancynickna.me" />
 	<meta
 		property="og:description"
-		content="Free fancy nickname generator. 25+ styled Unicode versions, one tap to copy."
+		content="25+ styled Unicode nicknames for games, Discord, Instagram, TikTok. Click to copy. Free, no signup."
 	/>
-	<meta property="og:image" content="https://fancynickna.me/og.png?title=fancy+nickname+generator" />
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=Fancy+Nickname+Generator&subtitle=Type+once.+Get+25%2B+Unicode+styles." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="fancynickna.me — fancy nickname generator" />
+	<meta name="twitter:title" content="Fancy Nickname Generator | fancynickna.me" />
 	<meta
 		name="twitter:description"
-		content="Free fancy nickname generator. 25+ styled Unicode versions, one tap to copy."
+		content="25+ styled Unicode nicknames. Click to copy. Free, no signup."
 	/>
-	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=fancy+nickname+generator" />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=Fancy+Nickname+Generator&subtitle=Type+once.+Get+25%2B+Unicode+styles." />
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'WebApplication',

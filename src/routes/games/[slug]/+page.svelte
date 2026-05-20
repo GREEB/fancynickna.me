@@ -48,8 +48,8 @@
 		}
 	}
 
-	const title = `${game.name} Fancy Nickname Generator — fancynickna.me`;
-	const description = `Free fancy nickname generator for ${game.name}. ${compatibleStyles.length} styled Unicode versions filtered for ${game.name}'s name rules. One tap to copy.`;
+	const title = `${game.name} Fancy Nickname Generator | fancynickna.me`;
+	const description = `Free ${game.name} nickname generator. ${compatibleStyles.length} styled Unicode versions filtered for ${game.name}'s name rules — bold, cursive, gothic, glitch and more. One tap to copy.`;
 
 	const faq = [
 		{

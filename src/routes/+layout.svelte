@@ -23,6 +23,17 @@
 	});
 </script>
 
+<svelte:head>
+	<!-- Shared social/SEO defaults. Per-page <svelte:head> can override
+	     anything individual (og:title, og:image, etc.) but these baseline
+	     properties stay constant: locale, site name, logo, brand color. -->
+	<meta property="og:site_name" content="fancynickna.me" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:logo" content="https://fancynickna.me/icon-512.png" />
+	<meta name="twitter:site" content="@fancynickname" />
+	<meta name="application-name" content="fancynickna.me" />
+</svelte:head>
+
 {@render children()}
 
 <DockedBar />

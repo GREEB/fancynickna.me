@@ -30,26 +30,26 @@
 </script>
 
 <svelte:head>
-	<title>Symbols & characters — fancynickna.me</title>
+	<title>Unicode Symbols & Characters | fancynickna.me</title>
 	<meta
 		name="description"
-		content="Every Unicode symbol, organized by block. Heart symbols, arrows, math, currency, emoji — copy with one tap."
+		content="Browse every Unicode symbol organized by block — hearts, arrows, math, currency, emoji, runic and more. Click any character to copy it, or see its full encoding info."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/symbols" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://fancynickna.me/symbols" />
-	<meta property="og:title" content="Symbols & characters — fancynickna.me" />
+	<meta property="og:title" content="Unicode Symbols & Characters | fancynickna.me" />
 	<meta
 		property="og:description"
-		content="Every Unicode symbol, organized by block. Copy with one tap."
+		content="Browse every Unicode symbol by block — hearts, arrows, math, currency, emoji. Click to copy."
 	/>
-	<meta property="og:image" content="https://fancynickna.me/og.png?title=every+symbol&subtitle=Browse+Unicode+by+block.+Hearts%2C+arrows%2C+math." />
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=Every+Symbol&subtitle=Browse+Unicode+by+block.+Hearts%2C+arrows%2C+math." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Symbols & characters — fancynickna.me" />
+	<meta name="twitter:title" content="Unicode Symbols & Characters | fancynickna.me" />
 	<meta name="twitter:description" content="Every Unicode symbol, organized by block." />
-	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=every+symbol" />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=Every+Symbol" />
 </svelte:head>
 
 <TopBar />

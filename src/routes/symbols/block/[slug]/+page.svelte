@@ -4,8 +4,8 @@
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	let { data } = $props();
 	const { block, chars } = data;
-	const title = `${block.name} — Unicode block · fancynickna.me`;
-	const description = `Every character in the ${block.name} Unicode block. U+${block.rangeStart.toString(16).toUpperCase()} to U+${block.rangeEnd.toString(16).toUpperCase()}. Click any to copy.`;
+	const title = `${block.name} Unicode Block | fancynickna.me`;
+	const description = `Every character in the ${block.name} Unicode block — U+${block.rangeStart.toString(16).toUpperCase()} to U+${block.rangeEnd.toString(16).toUpperCase()}. Click any character to copy or see its full encoding info.`;
 
 	// Infinite scroll: render BATCH at a time, grow when the sentinel scrolls
 	// into view. Blocks can have up to 1000 chars; rendering them all upfront
