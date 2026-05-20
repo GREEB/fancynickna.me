@@ -4,7 +4,6 @@
 	import Marquee from '$lib/components/Marquee.svelte';
 	import TopBar from '$lib/components/TopBar.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import SuggestionChips from '$lib/components/SuggestionChips.svelte';
 	import ResultsGrid from '$lib/components/ResultsGrid.svelte';
 	import DecorationStep from '$lib/components/DecorationStep.svelte';
 	import FAQ from '$lib/components/FAQ.svelte';
@@ -91,8 +90,6 @@
 		onInput={(v) => (name = v)}
 		onClear={() => (name = '')}
 	/>
-
-	<SuggestionChips onPick={(s) => (name = s)} />
 
 	<ResultsGrid {name} {styles} {deco} {applyDeco} {tick} {copiedId} onCopy={copy} />
 

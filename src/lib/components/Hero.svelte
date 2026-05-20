@@ -14,22 +14,9 @@
 <section
 	style="padding: clamp(20px, 3vw, 48px) clamp(20px, 4vw, 56px) 28px; max-width: 1200px;"
 >
-	<!-- Eyebrow pill with pulsing dot -->
-	<div
-		class="inline-flex items-center gap-2"
-		style="border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-family: var(--font-mono); font-size: 12px; text-transform: lowercase; color: var(--fg-soft);"
-	>
-		<span
-			class="pulse-dot inline-block"
-			style="width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent);"
-			aria-hidden="true"
-		></span>
-		<span>the nickname generator that does too much</span>
-	</div>
-
 	<!-- Title -->
 	<h1
-		style="font-family: var(--font-display); font-size: clamp(36px, 5.2vw, 72px); line-height: 0.95; letter-spacing: -0.025em; text-wrap: balance; margin: 22px 0 18px;"
+		style="font-family: var(--font-display); font-size: clamp(36px, 5.2vw, 72px); line-height: 0.95; letter-spacing: -0.025em; text-wrap: balance; margin: 0 0 18px;"
 	>
 		make your name
 		<span class="cycle">
