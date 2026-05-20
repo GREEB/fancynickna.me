@@ -4,6 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/manifest.webmanifest" />
 		<meta name="theme-color" content="#F5F2EA" />
 		<!-- Resolve theme before paint so there's no flash. 'auto' (default) follows
 		     the OS prefers-color-scheme; users can override to 'cream' or 'ink'. -->
@@ -20,6 +22,35 @@
 					document.documentElement.setAttribute('data-theme', effective);
 				} catch (e) {}
 			})();
+		</script>
+		<!-- Google Analytics 4 with Consent Mode v2.
+		     Default everything to 'denied'; the ConsentBanner component flips
+		     analytics_storage to 'granted' once the user accepts. If they've
+		     accepted in a prior visit we restore that synchronously here so the
+		     first pageview after reload is tracked without a banner round-trip. -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-LW8Y894QET"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('consent', 'default', {
+				ad_storage: 'denied',
+				ad_user_data: 'denied',
+				ad_personalization: 'denied',
+				analytics_storage: 'denied',
+				wait_for_update: 500
+			});
+			try {
+				if (localStorage.getItem('consent') === 'granted') {
+					gtag('consent', 'update', { analytics_storage: 'granted' });
+				}
+			} catch (e) {}
+			// SPA pageview is fired manually from +layout.svelte. We still need
+			// the initial config call so GA has a session — it just won't send a
+			// pageview until consent is granted (consent mode handles gating).
+			gtag('config', 'G-LW8Y894QET', { send_page_view: false });
 		</script>
 		%sveltekit.head%
 	</head>

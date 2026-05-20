@@ -71,7 +71,7 @@
 		},
 		{
 			q: 'Is it free?',
-			a: 'Yes. Forever. No signup, no ads, no tracking.'
+			a: 'Yes. Forever. No signup, no ads, anonymous analytics only.'
 		}
 	];
 

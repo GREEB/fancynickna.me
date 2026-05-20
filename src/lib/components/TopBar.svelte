@@ -4,7 +4,7 @@
 
 <header
 	class="flex items-center justify-between"
-	style="padding: 22px clamp(20px, 4vw, 56px); border-bottom: 1px solid var(--line);"
+	style="padding: 14px clamp(20px, 4vw, 56px); border-bottom: 1px solid var(--line);"
 >
 	<a href="/" class="flex items-center gap-[10px] no-underline" style="color: var(--fg);">
 		<span

@@ -16,7 +16,7 @@
      ink regardless of theme so it's always readable on the saturated bg. -->
 <div
 	class="overflow-hidden"
-	style="height: 38px; background: var(--accent); border-bottom: 2px solid #0e0e10;"
+	style="height: 30px; background: var(--accent); border-bottom: 2px solid #0e0e10;"
 >
 	<div class="marquee-track h-full items-center">
 		{#each tripled as item, i (i)}

@@ -12,7 +12,7 @@
 </script>
 
 <section
-	style="padding: clamp(40px, 7vw, 100px) clamp(20px, 4vw, 56px) 40px; max-width: 1200px;"
+	style="padding: clamp(20px, 3vw, 48px) clamp(20px, 4vw, 56px) 28px; max-width: 1200px;"
 >
 	<!-- Eyebrow pill with pulsing dot -->
 	<div

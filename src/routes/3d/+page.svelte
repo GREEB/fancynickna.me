@@ -180,7 +180,9 @@
 		});
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 		renderer.toneMapping = THREE.ACESFilmicToneMapping;
-		renderer.toneMappingExposure = 1.0;
+		// 1.15 gives the neon and metal materials more headroom against ACES's
+		// desaturation; the studio lighting preset stays well under clip.
+		renderer.toneMappingExposure = 1.15;
 		renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 		const scene = new THREE.Scene();
@@ -357,11 +359,18 @@
 						clearcoat: 1
 					});
 				case 'neon':
+					// True neon needs: pure black base (no diffuse pickup), zero
+					// envmap intensity (don't reflect the studio environment), and
+					// rough surface (kill specular). What's left is pure emissive
+					// at the saturated picked color — reads unmistakably as neon
+					// instead of "lit metal that happens to be lime".
 					return new THREE.MeshStandardMaterial({
-						color: 0x111111,
+						color: 0x000000,
 						emissive: c,
-						emissiveIntensity: 1.6,
-						roughness: 0.5
+						emissiveIntensity: 1.2,
+						roughness: 1.0,
+						metalness: 0,
+						envMapIntensity: 0
 					});
 				case 'toon':
 					return new THREE.MeshToonMaterial({ color: c });

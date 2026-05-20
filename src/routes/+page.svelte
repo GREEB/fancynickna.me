@@ -44,7 +44,7 @@
 	<title>fancynickna.me — fancy nickname generator (free, no signup)</title>
 	<meta
 		name="description"
-		content="Free fancy nickname generator. Type your name once, get 25+ styled Unicode versions — bold, cursive, gothic, bubble, glitch and more. Click to copy. No signup, no ads, no tracking."
+		content="Free fancy nickname generator. Type your name once, get 25+ styled Unicode versions — bold, cursive, gothic, bubble, glitch and more. Click to copy. No signup, no ads, anonymous analytics only."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/" />
 	<meta name="theme-color" content="#f5f2ea" />
@@ -150,9 +150,10 @@
 				free, no signup, no ads
 			</h2>
 			<p style="font-family: var(--font-sans); font-size: 16px; line-height: 1.6; color: var(--fg);">
-				No accounts. No tracking. No ads. The generator runs entirely in your browser — your name
-				never leaves your device. Use it as many times as you want. Built with SvelteKit,
-				Bun, Postgres and a lot of Unicode tables.
+				No accounts. No ads. The generator runs entirely in your browser — your name never leaves
+				your device. We use Google Analytics to see which styles are popular (you can opt out
+				with the banner the first time you visit). Built with SvelteKit and a lot of Unicode
+				tables.
 			</p>
 		</div>
 	</section>

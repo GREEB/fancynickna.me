@@ -7,7 +7,7 @@
 	<title>About — fancynickna.me</title>
 	<meta
 		name="description"
-		content="fancynickna.me is a free fancy nickname generator. No signup, no tracking, no ads. Just type your name and copy a styled Unicode version for games and social profiles."
+		content="fancynickna.me is a free fancy nickname generator. No signup, no ads, anonymous analytics only. Just type your name and copy a styled Unicode version for games and social profiles."
 	/>
 	<link rel="canonical" href="https://fancynickna.me/about" />
 	<meta property="og:type" content="website" />
@@ -15,14 +15,14 @@
 	<meta property="og:title" content="About — fancynickna.me" />
 	<meta
 		property="og:description"
-		content="Free fancy nickname generator. No signup, no tracking, no ads."
+		content="Free fancy nickname generator. No signup, no ads, anonymous analytics only."
 	/>
 	<meta property="og:image" content="https://fancynickna.me/og.png?title=about&subtitle=Free.+No+signup.+No+tracking." />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="About — fancynickna.me" />
-	<meta name="twitter:description" content="Free fancy nickname generator. No signup, no tracking, no ads." />
+	<meta name="twitter:description" content="Free fancy nickname generator. No signup, no ads, anonymous analytics only." />
 	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=about" />
 </svelte:head>
 
@@ -43,7 +43,9 @@
 			work everywhere that lets you use letters, which is almost everywhere.
 		</p>
 		<p style="font-family: var(--font-sans); font-size: 18px; line-height: 1.55; color: var(--fg); margin: 0 0 32px;">
-			No signup. No tracking pixels. No ads. No subscriptions. Type, click, paste.
+			No signup. No ads. No subscriptions. Just anonymous Google Analytics so we know which
+			styles are popular — opt out with the banner on first visit if you don't want it. Type,
+			click, paste.
 		</p>
 	</section>
 
