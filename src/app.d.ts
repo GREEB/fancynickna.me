@@ -10,4 +10,11 @@ declare global {
 	}
 }
 
+// Vite asset import suffixes — TS doesn't know about them out of the box,
+// so we declare the ones we use (just `?inline` so far, for the OG font).
+declare module '*.ttf?inline' {
+	const dataUrl: string;
+	export default dataUrl;
+}
+
 export {};
