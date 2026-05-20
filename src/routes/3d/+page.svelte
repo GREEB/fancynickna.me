@@ -1149,6 +1149,11 @@
 			display: block;
 			z-index: 30;
 		}
+		/* DockedBar sits at bottom: ~14px; lift the HUD above it on mobile so
+		   reset / fit / drag-hint aren't hidden under the global nickname pill. */
+		.canvas-hud {
+			bottom: 80px;
+		}
 	}
 
 	/* CONTROLS PANEL */

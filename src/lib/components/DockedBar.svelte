@@ -96,7 +96,7 @@
 		<button type="button" class="dock-btn dock-btn-icon" onclick={clearAll} title="clear">×</button>
 		<button
 			type="button"
-			class="dock-btn dock-btn-icon"
+			class="dock-btn dock-btn-icon dock-dismiss"
 			onclick={() => (dismissed = true)}
 			title="hide for this session"
 		>—</button>
@@ -369,6 +369,20 @@
 		.picker {
 			bottom: 72px;
 			max-height: 60vh;
+		}
+	}
+	@media (max-width: 420px) {
+		/* Below ~iPhone SE width the row is too cramped — drop the dismiss button
+		   to give the input space. The × clear button is enough to reset. */
+		.dock-tag {
+			max-width: 80px;
+			padding: 5px 24px 5px 8px;
+		}
+		.dock-btn {
+			padding: 7px 10px;
+		}
+		.dock-dismiss {
+			display: none;
 		}
 	}
 </style>
