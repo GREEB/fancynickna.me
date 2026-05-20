@@ -40,7 +40,7 @@ const seed: {
 	{ name: 'Brawl Stars', platform: 'mobile', genre: 'arena', minNameLen: 3, maxNameLen: 15, popularityScore: 79 },
 	{ name: 'Clash Royale', platform: 'mobile', genre: 'strategy', minNameLen: 3, maxNameLen: 15, popularityScore: 78 },
 	{ name: 'Clash of Clans', platform: 'mobile', genre: 'strategy', minNameLen: 3, maxNameLen: 15, popularityScore: 77 },
-	{ name: 'GTA Online', aliases: ['gta v', 'gta 5', 'grand theft auto v'], platform: 'multi', genre: 'open-world', minNameLen: 3, maxNameLen: 16, popularityScore: 76 },
+	{ name: 'GTA Online', aliases: ['gta v', 'gta 5', 'grand theft auto v', 'grand theft auto online'], platform: 'multi', genre: 'open-world', minNameLen: 3, maxNameLen: 16, popularityScore: 76 },
 	{ name: 'Rocket League', platform: 'multi', genre: 'sports', minNameLen: 3, maxNameLen: 20, popularityScore: 75 },
 	{ name: 'EA Sports FC 25', aliases: ['fifa', 'fc 25'], platform: 'multi', genre: 'sports', minNameLen: 3, maxNameLen: 16, popularityScore: 74 },
 	{ name: 'World of Warcraft', aliases: ['wow'], platform: 'pc', genre: 'mmo', minNameLen: 2, maxNameLen: 12, popularityScore: 73 },
@@ -110,7 +110,9 @@ async function main() {
 	console.log(`seeded ${seed.length} curated games`);
 }
 
-main().catch((e) => {
-	console.error(e);
-	process.exit(1);
-});
+main()
+	.then(() => process.exit(0))
+	.catch((e) => {
+		console.error(e);
+		process.exit(1);
+	});

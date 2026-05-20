@@ -1,4 +1,6 @@
-<script lang="ts"></script>
+<script lang="ts">
+	import ThemeToggle from './ThemeToggle.svelte';
+</script>
 
 <header
 	class="flex items-center justify-between"
@@ -14,13 +16,34 @@
 		</span>
 	</a>
 
-	<nav class="flex items-center" style="gap: 26px;">
+	<nav class="flex items-center" style="gap: 22px;">
 		<a
 			href="/styles"
 			class="hidden sm:inline"
 			style="font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--fg-soft); text-decoration: none;"
 			onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg)')}
 			onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg-soft)')}>styles</a
+		>
+		<a
+			href="/advanced"
+			class="hidden sm:inline"
+			style="font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--fg-soft); text-decoration: none;"
+			onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg)')}
+			onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg-soft)')}>advanced</a
+		>
+		<a
+			href="/decorations"
+			class="hidden sm:inline"
+			style="font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--fg-soft); text-decoration: none;"
+			onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg)')}
+			onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg-soft)')}>deco</a
+		>
+		<a
+			href="/3d"
+			class="hidden sm:inline"
+			style="font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--fg-soft); text-decoration: none;"
+			onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg)')}
+			onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg-soft)')}>3d</a
 		>
 		<a
 			href="/symbols"
@@ -31,14 +54,15 @@
 			>symbols</a
 		>
 		<a
-			href="/about"
+			href="/games"
 			class="hidden sm:inline"
 			style="font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--fg-soft); text-decoration: none;"
 			onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg)')}
-			onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg-soft)')}>about</a
+			onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--fg-soft)')}>games</a
 		>
+		<ThemeToggle />
 		<a
-			href="/api"
+			href="/about"
 			style="background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 14px; text-decoration: none; font-family: var(--font-sans);"
 			onmouseenter={(e) => {
 				(e.currentTarget as HTMLElement).style.background = 'var(--accent)';
@@ -47,7 +71,7 @@
 			onmouseleave={(e) => {
 				(e.currentTarget as HTMLElement).style.background = 'var(--fg)';
 				(e.currentTarget as HTMLElement).style.color = 'var(--bg)';
-			}}>use the api →</a
+			}}>about →</a
 		>
 	</nav>
 </header>

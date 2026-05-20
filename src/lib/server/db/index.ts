@@ -1,9 +1,17 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { env } from '$env/dynamic/private';
 import * as schema from './schema';
 
-const url = env.DATABASE_URL;
+// SvelteKit/Vite exposes runtime env via $env/dynamic/private (Vite doesn't
+// populate process.env from .env files). Bare Bun scripts can't resolve that
+// virtual module — they load .env themselves via dotenv, so process.env works.
+let url: string | undefined;
+try {
+	const mod = await import(/* @vite-ignore */ '$env/dynamic/private');
+	url = mod.env.DATABASE_URL;
+} catch {
+	url = process.env.DATABASE_URL;
+}
 
 const client = url
 	? postgres(url, { max: 10, prepare: false })

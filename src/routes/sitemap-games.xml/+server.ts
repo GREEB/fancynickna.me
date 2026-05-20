@@ -1,20 +1,12 @@
-import { db, schema } from '$lib/server/db';
-import { sql } from 'drizzle-orm';
+import { sitemapGames } from '$lib/server/data';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {
 	const origin = url.origin;
-	const rows = await db.query.games.findMany({
-		columns: { slug: true, updatedAt: true },
-		orderBy: sql`popularity_score desc`,
-		limit: 50000
-	});
-
+	const rows = sitemapGames();
+	// After JSON serialization the updatedAt timestamps are ISO strings already.
 	const urls = rows
-		.map(
-			(g) =>
-				`<url><loc>${origin}/games/${g.slug}</loc><lastmod>${g.updatedAt.toISOString()}</lastmod></url>`
-		)
+		.map((g) => `<url><loc>${origin}/games/${g.slug}</loc><lastmod>${g.updatedAt}</lastmod></url>`)
 		.join('\n');
 
 	const xml = `<?xml version="1.0" encoding="UTF-8"?>

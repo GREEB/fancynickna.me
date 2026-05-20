@@ -10,6 +10,21 @@
 		name="description"
 		content="Every Unicode symbol, organized by block. Heart symbols, arrows, math, currency, emoji — copy with one tap."
 	/>
+	<link rel="canonical" href="https://fancynickna.me/symbols" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://fancynickna.me/symbols" />
+	<meta property="og:title" content="Symbols & characters — fancynickna.me" />
+	<meta
+		property="og:description"
+		content="Every Unicode symbol, organized by block. Copy with one tap."
+	/>
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=every+symbol&subtitle=Browse+Unicode+by+block.+Hearts%2C+arrows%2C+math." />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Symbols & characters — fancynickna.me" />
+	<meta name="twitter:description" content="Every Unicode symbol, organized by block." />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=every+symbol" />
 </svelte:head>
 
 <TopBar />
@@ -21,22 +36,42 @@
 		>
 			every symbol.
 		</h1>
-		<p style="color: var(--fg-soft); max-width: 580px;">
+		<p style="color: var(--fg-soft); max-width: 720px; font-family: var(--font-sans); font-size: 17px; line-height: 1.55;">
+			Unicode is the world's character catalog — over a hundred thousand letters, digits, punctuation
+			marks, math operators, dingbats, currency signs, kaomoji components, and emoji. This page
+			organizes them by <strong>block</strong>: the named ranges Unicode itself uses, like
+			<em>Mathematical Operators</em>, <em>Arrows</em>, <em>Greek and Coptic</em> or
+			<em>Latin Extended-A</em>. Click a block to see every character inside it, hover any
+			character to copy it.
+		</p>
+		<p style="color: var(--fg-soft); max-width: 720px; margin-top: 8px;">
 			browse Unicode by block. {data.blocks.length} blocks, hundreds of thousands of characters.
 		</p>
 	</section>
 
 	<section
-		style="padding: 0 clamp(20px, 4vw, 56px) 80px; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));"
+		style="padding: 0 clamp(20px, 4vw, 56px) 80px; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));"
 	>
 		{#each data.blocks as b (b.id)}
+			{@const preview = data.previewByBlock[b.slug]}
 			<a
 				href={`/symbols/block/${b.slug}`}
-				style="border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; text-decoration: none; color: var(--fg);"
+				class="block-card"
+				style="display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; text-decoration: none; color: var(--fg); background: var(--card);"
 			>
-				<div style="font-size: 14px;">{b.name}</div>
-				<div style="font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); margin-top: 2px;">
-					U+{b.rangeStart.toString(16).toUpperCase()}–U+{b.rangeEnd.toString(16).toUpperCase()}
+				<div
+					style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); font-family: serif; font-size: 26px; line-height: 1; overflow: hidden;"
+					aria-hidden="true"
+				>
+					{preview?.char ?? '·'}
+				</div>
+				<div style="min-width: 0;">
+					<div style="font-size: 14px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis;">
+						{b.name}
+					</div>
+					<div style="font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); margin-top: 2px;">
+						U+{b.rangeStart.toString(16).toUpperCase()}–U+{b.rangeEnd.toString(16).toUpperCase()}
+					</div>
 				</div>
 			</a>
 		{/each}
@@ -44,3 +79,14 @@
 
 	<SiteFooter />
 </main>
+
+<style>
+	.block-card {
+		transition: transform 80ms ease, box-shadow 80ms ease, border-color 80ms ease;
+	}
+	.block-card:hover {
+		transform: translate(-1px, -1px);
+		border-color: var(--fg);
+		box-shadow: 3px 3px 0 var(--accent), 3px 3px 0 1px var(--fg);
+	}
+</style>

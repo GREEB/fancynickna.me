@@ -81,7 +81,7 @@ Each scraper:
 3. Upserts via `onConflictDoUpdate` keyed on `(source, sourceId)` for games, `codepoint` for characters.
 4. Updates the job row to `'success'` (with stats) or `'failed'` (with error message).
 
-The CLI entry is `scripts/scrape.ts` (`bun scripts/scrape.ts <steam|unicode|all> [enrichTop]`). Scrapers are Bun-only — they import `$env/dynamic/private` indirectly via `db/index.ts`, but the script loads `.env` via `dotenv/config` first.
+The CLI entry is `scripts/scrape.ts` (`bun scripts/scrape.ts <steam|unicode|all> [enrichTop]`). Scrapers are Bun-only. `db/index.ts` reads `DATABASE_URL` from `$env/dynamic/private` when running under SvelteKit/Vite, and falls back to `process.env.DATABASE_URL` when imported by a bare Bun script — that fallback only works because the script entries (`scripts/scrape.ts`, `scripts/seed-games.ts`) load `dotenv/config` at the top before any other imports.
 
 ### Design system
 

@@ -1,10 +1,9 @@
-import { db, schema } from '$lib/server/db';
-import { sql } from 'drizzle-orm';
+import { listBlocks, getPreviewByBlock } from '$lib/server/data';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-	const blocks = await db.query.unicodeBlocks.findMany({
-		orderBy: sql`range_start asc`
-	});
-	return { blocks };
+	return {
+		blocks: listBlocks(),
+		previewByBlock: getPreviewByBlock()
+	};
 };

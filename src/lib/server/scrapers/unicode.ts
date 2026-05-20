@@ -65,6 +65,7 @@ export async function scrapeUnicode(opts: { includePrivateUse?: boolean } = {}) 
 			if (name.endsWith(', First>') || name.endsWith(', Last>')) continue;
 			if (codepoint >= 0xd800 && codepoint <= 0xdfff) continue; // surrogates
 			if (!includePrivateUse && category === 'Co') continue;
+			if (codepoint === 0) continue; // PG text columns can't store U+0000
 
 			// <control> chars get a friendlier label
 			if (name === '<control>') name = cols[10] || `Control U+${cols[0]}`;

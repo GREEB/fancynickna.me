@@ -6,7 +6,7 @@
 	style="padding: 60px clamp(20px, 4vw, 56px) 30px; border-top: 2px solid var(--fg);"
 >
 	<div
-		style="font-family: var(--font-display); font-size: clamp(70px, 16vw, 240px); line-height: 1; letter-spacing: -0.04em; -webkit-text-stroke: 2px var(--fg); color: transparent; user-select: none;"
+		style="font-family: var(--font-display); font-size: clamp(32px, 14vw, 240px); line-height: 1; letter-spacing: -0.04em; -webkit-text-stroke: 1.5px var(--fg); color: transparent; user-select: none; overflow-wrap: break-word; word-break: break-word;"
 		aria-hidden="true"
 	>
 		fancynickna.me
@@ -19,6 +19,6 @@
 		<span style="opacity: 0.5;">●</span>
 		<span>made with too much time</span>
 		<span style="opacity: 0.5;">●</span>
-		<span style="color: var(--accent);">v0.1</span>
+		<span class="accent-ink">v0.1</span>
 	</div>
 </footer>

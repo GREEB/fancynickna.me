@@ -5,6 +5,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<meta name="theme-color" content="#F5F2EA" />
+		<!-- Resolve theme before paint so there's no flash. 'auto' (default) follows
+		     the OS prefers-color-scheme; users can override to 'cream' or 'ink'. -->
+		<script>
+			(function () {
+				try {
+					var pref = localStorage.getItem('theme') || 'auto';
+					var effective =
+						pref === 'auto'
+							? matchMedia('(prefers-color-scheme: dark)').matches
+								? 'ink'
+								: 'cream'
+							: pref;
+					document.documentElement.setAttribute('data-theme', effective);
+				} catch (e) {}
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

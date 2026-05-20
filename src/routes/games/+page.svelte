@@ -11,6 +11,21 @@
 		name="description"
 		content="Browse fancy nickname generators for every game. Steam, mobile, web, console — find your game and style your username."
 	/>
+	<link rel="canonical" href="https://fancynickna.me/games" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://fancynickna.me/games" />
+	<meta property="og:title" content="All games — fancynickna.me" />
+	<meta
+		property="og:description"
+		content="Fancy nickname generator for every game — built-in name rule checks per title."
+	/>
+	<meta property="og:image" content="https://fancynickna.me/og.png?title=every+game&subtitle=Per-game+name+rule+checks.+Built-in+styles." />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="All games — fancynickna.me" />
+	<meta name="twitter:description" content="Fancy nickname generator for every game." />
+	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=every+game" />
 </svelte:head>
 
 <TopBar />

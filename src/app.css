@@ -29,6 +29,11 @@
 	--fg: #0e0e10;
 	--card: #ffffff;
 	--accent: #c8ff3d;
+	/* --accent is tuned for fill/blocks (low contrast as text on light bg).
+	   --accent-text is a darker on-brand variant we use anywhere accent appears
+	   as plain text on the page bg. Themed per accent in the html[data-accent]
+	   blocks below; in ink mode it falls back to --accent (good contrast there). */
+	--accent-text: #4a7a00;
 	--line: rgba(14, 14, 16, 0.14);
 	--fg-soft: rgba(14, 14, 16, 0.62);
 
@@ -41,21 +46,31 @@ html[data-theme='ink'] {
 	--card: #1a1a1d;
 	--line: rgba(245, 242, 234, 0.14);
 	--fg-soft: rgba(245, 242, 234, 0.62);
+	/* On dark bg, the bright accent already has plenty of contrast — use it directly. */
+	--accent-text: var(--accent);
 
 	color-scheme: dark;
 }
 
 html[data-accent='lime'] {
 	--accent: #c8ff3d;
+	--accent-text: #4a7a00;
 }
 html[data-accent='pink'] {
 	--accent: #ff4fb0;
+	--accent-text: #b50066;
 }
 html[data-accent='blue'] {
 	--accent: #4f7cff;
+	--accent-text: #2b48d4;
 }
 html[data-accent='orange'] {
 	--accent: #ff7a3d;
+	--accent-text: #c2440a;
+}
+
+html[data-theme='ink'][data-accent] {
+	--accent-text: var(--accent);
 }
 
 html,
@@ -99,14 +114,14 @@ body {
 	animation: pulse-dot 1.5s ease-in-out infinite;
 }
 
-/* Cycling fancy word */
+/* Cycling fancy word. Each variant occupies 1/5 of a 7.5s loop (1.5s on screen). */
 @keyframes cycle {
 	0%,
-	26% {
+	16% {
 		opacity: 1;
 		transform: skewX(0);
 	}
-	30%,
+	20%,
 	96% {
 		opacity: 0;
 		transform: skewX(-3deg);
@@ -116,18 +131,28 @@ body {
 		transform: skewX(0);
 	}
 }
+.cycle {
+	display: inline-grid;
+	vertical-align: baseline;
+	line-height: inherit;
+}
 .cycle-var {
-	position: absolute;
-	inset: 0;
+	grid-area: 1 / 1;
 	font-family: serif;
 	opacity: 0;
-	animation: cycle 4.5s infinite;
+	animation: cycle 7.5s infinite;
+	white-space: nowrap;
 }
-.cycle-var:nth-child(2) {
-	animation-delay: 1.5s;
-}
-.cycle-var:nth-child(3) {
-	animation-delay: 3s;
+.cycle-var:nth-child(1) { animation-delay: 0s; }
+.cycle-var:nth-child(2) { animation-delay: 1.5s; }
+.cycle-var:nth-child(3) { animation-delay: 3s; }
+.cycle-var:nth-child(4) { animation-delay: 4.5s; }
+.cycle-var:nth-child(5) { animation-delay: 6s; }
+
+/* For accent used as text — uses the darkened --accent-text variant so light-bg
+   contrast is at least 4.5:1. In ink mode this falls through to the bright --accent. */
+.accent-ink {
+	color: var(--accent-text);
 }
 
 /* Brutalist shadows — no blur */

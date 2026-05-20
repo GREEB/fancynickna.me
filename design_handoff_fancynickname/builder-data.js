@@ -1,0 +1,46 @@
+// Symbol categories and decoration templates for the nickname builder
+// Text-only — no emoji. Each symbol is a single inserted char or sequence.
+
+window.BuilderData = {
+  symbolCategories: {
+    Stars:     '★ ☆ ✦ ✧ ✩ ✪ ✫ ✬ ✭ ✮ ✯ ✰ ⋆ ✶ ✷ ✸ ✹ ✺ ✻ ⭒ ⊹ ✱ ✲ ✳ ✴'.split(' '),
+    Hearts:    '♥ ♡ ❤ ❥ ❦ ❧ ღ ෆ ლ ❣ ჱ ૮ ୨୧'.split(' '),
+    Sparkles:  '✦ ✧ ⋆ ｡ ° ⁺ ˖ ࿐ ⭒ ⊹ ✾ ❀ ❁ ❃ ❋ ✿ ⚘ ⁕ ܁'.split(' '),
+    Music:     '♪ ♫ ♬ ♩ ♭ ♮ ♯ 𝄞 𝄢 ♪̩'.split(' '),
+    Arrows:    '→ ← ↑ ↓ ↔ ↕ ➔ ➜ ➤ ➥ ➦ ➧ ➩ ➪ ➫ ➬ ➭ ➮ ➯ ➱ ➲ ➳ ➵ ➸ ➺ ➻ ➼ ➽ ⇒ ⇐ ⟶ ⟵ ↠ ↞ ⇝'.split(' '),
+    Brackets:  '【 】 「 」 『 』 〈 〉 《 》 〔 〕 ꧁ ꧂ ༺ ༻ ╰ ╯ ╭ ╮ ⌜ ⌝ ⌞ ⌟ ⟦ ⟧ ⦃ ⦄'.split(' '),
+    Geometric: '◆ ◇ ● ○ ■ □ ▲ △ ▼ ▽ ◢ ◣ ◤ ◥ ⬢ ⬡ ⬟ ⬠ ⬣ ⌬ ◐ ◑ ◒ ◓'.split(' '),
+    Crowns:    '♛ ♕ ♚ ♔ ⚜ ⚛ ☥ ❂ ♖ ♜ ♞ ♘'.split(' '),
+    Mystic:    '☯ ☮ ☥ ⚝ ❂ ☩ ✟ ☦ ☪ ☉ ☼ ☽ ☾ ☄ ♆ ⚸ ⚹ ⚷ ♅'.split(' '),
+    Greek:     'Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω α β γ δ ε ζ η θ λ μ π ρ σ τ φ ψ ω'.split(' '),
+    Cyrillic:  'Я Ж Ш Щ Б Д Ф Ю Ё Ц Ч Й Ь Ъ Э Ы Г П Л З'.split(' '),
+    Lines:     '━ ─ ┅ ┄ • · ● ◦ ◌ ⦁ ⸻ ⸺ ⸺ ⌇ ⁓ ～'.split(' '),
+    Weather:   '☀ ☁ ☂ ☃ ☄ ☔ ❄ ❅ ❆ ☼ ☽ ☾ ♨'.split(' '),
+    Cards:     '♠ ♣ ♥ ♦ ♤ ♧ ♡ ♢'.split(' '),
+  },
+
+  templates: [
+    { wrap: ['꧁༒ ', ' ༒꧂'], name: 'mystic' },
+    { wrap: ['★彡 ', ' 彡★'], name: 'shooting star' },
+    { wrap: ['⋆˚࿐ ', ' ࿐˚⋆'], name: 'kawaii' },
+    { wrap: ['✦ ', ' ✦'], name: 'simple sparkle' },
+    { wrap: ['【 ', ' 】'], name: 'jp brackets' },
+    { wrap: ['『 ', ' 』'], name: 'jp brackets 2' },
+    { wrap: ['♡ ', ' ♡'], name: 'hearts' },
+    { wrap: ['☆゚.*・。ﾟ ', ' ﾟ。･*.ﾟ☆'], name: 'kira kira' },
+    { wrap: ['꒰ ', ' ꒱'], name: 'soft' },
+    { wrap: ['彡 ', ' 彡'], name: 'wind' },
+    { wrap: ['⌬ ', ' ⌬'], name: 'cyber' },
+    { wrap: ['➤ ', ' ✦'], name: 'arrow' },
+    { wrap: ['✿ ', ' ✿'], name: 'flower' },
+    { wrap: ['╰☆☆ ', ' ☆☆╮'], name: 'lounge' },
+    { wrap: ['⊹ ', ' ⊹'], name: 'starlight' },
+    { wrap: ['°•. ', ' .•°'], name: 'orbit' },
+    { wrap: ['✦༒ ', ' ༒✦'], name: 'royal' },
+    { wrap: ['⚝ ', ' ⚝'], name: 'celestial' },
+    { wrap: ['☾ ', ' ☽'], name: 'moon' },
+    { wrap: ['+*｡ ', ' ｡*+'], name: 'pixie dust' },
+    { wrap: ['ʚ ', ' ɞ'], name: 'cute' },
+    { wrap: ['ೃ࿔ ', ' ೃ࿔'], name: 'soft 2' },
+  ],
+};

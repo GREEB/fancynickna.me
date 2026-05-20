@@ -1,19 +1,10 @@
 import { error } from '@sveltejs/kit';
-import { db, schema } from '$lib/server/db';
-import { eq, sql } from 'drizzle-orm';
+import { findBlock, charactersInBlock } from '$lib/server/data';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	const block = await db.query.unicodeBlocks.findFirst({
-		where: eq(schema.unicodeBlocks.slug, params.slug)
-	});
+	const block = findBlock(params.slug);
 	if (!block) throw error(404, 'block not found');
-
-	const chars = await db.query.characters.findMany({
-		where: eq(schema.characters.blockSlug, block.slug),
-		orderBy: sql`codepoint asc`,
-		limit: 1000
-	});
-
+	const chars = charactersInBlock(block.slug, 1000);
 	return { block, chars };
 };

@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, timestamp, boolean, jsonb, index, real } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, integer, timestamp, boolean, jsonb, index, uniqueIndex, real } from 'drizzle-orm/pg-core';
 
 export const games = pgTable(
 	'games',
@@ -19,6 +19,7 @@ export const games = pgTable(
 		maxNameLen: integer('max_name_len'),
 		allowedCharsRegex: text('allowed_chars_regex'),
 		bannedWords: jsonb('banned_words').$type<string[]>().default([]).notNull(),
+		screenshots: jsonb('screenshots').$type<string[]>().default([]).notNull(),
 		popularityScore: real('popularity_score').default(0).notNull(),
 		curated: boolean('curated').default(false).notNull(),
 		lastScrapedAt: timestamp('last_scraped_at', { withTimezone: true }),
@@ -26,7 +27,7 @@ export const games = pgTable(
 		updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull()
 	},
 	(t) => [
-		index('games_source_idx').on(t.source, t.sourceId),
+		uniqueIndex('games_source_idx').on(t.source, t.sourceId),
 		index('games_popularity_idx').on(t.popularityScore),
 		index('games_name_idx').on(t.name)
 	]
