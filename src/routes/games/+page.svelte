@@ -26,6 +26,36 @@
 	<meta name="twitter:title" content="Fancy Nickname Generator for Every Game | fancynickna.me" />
 	<meta name="twitter:description" content="Per-game nickname generators with built-in name rule checks." />
 	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=Every+Game" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'CollectionPage',
+				name: 'Fancy Nickname Generator for Every Game',
+				url: 'https://fancynickna.me/games',
+				description:
+					'Per-game fancy nickname generators with built-in name rule checks — Valorant, Fortnite, Roblox, Free Fire, Minecraft and more.',
+				mainEntity: {
+					'@type': 'ItemList',
+					numberOfItems: data.games.length,
+					itemListElement: data.games.slice(0, 30).map((g, i) => ({
+						'@type': 'ListItem',
+						position: i + 1,
+						name: g.name,
+						item: `https://fancynickna.me/games/${g.slug}`
+					}))
+				}
+			},
+			{
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fancynickna.me/' },
+					{ '@type': 'ListItem', position: 2, name: 'Games', item: 'https://fancynickna.me/games' }
+				]
+			}
+		]
+	})}<\/script>`}
 </svelte:head>
 
 <TopBar />

@@ -50,6 +50,36 @@
 	<meta name="twitter:title" content="Unicode Symbols & Characters | fancynickna.me" />
 	<meta name="twitter:description" content="Every Unicode symbol, organized by block." />
 	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=Every+Symbol" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'CollectionPage',
+				name: 'Unicode Symbols & Characters',
+				url: 'https://fancynickna.me/symbols',
+				description:
+					'Browse every Unicode symbol organized by block — hearts, arrows, math, currency, emoji, runic and more.',
+				mainEntity: {
+					'@type': 'ItemList',
+					numberOfItems: data.blocks.length,
+					itemListElement: data.blocks.slice(0, 50).map((b, i) => ({
+						'@type': 'ListItem',
+						position: i + 1,
+						name: b.name,
+						item: `https://fancynickna.me/symbols/block/${b.slug}`
+					}))
+				}
+			},
+			{
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fancynickna.me/' },
+					{ '@type': 'ListItem', position: 2, name: 'Symbols', item: 'https://fancynickna.me/symbols' }
+				]
+			}
+		]
+	})}<\/script>`}
 </svelte:head>
 
 <TopBar />

@@ -1,11 +1,16 @@
 import { sitemapCharacters } from '$lib/server/data/sitemap-chars';
 import type { RequestHandler } from './$types';
 
+// Character data refreshes only when we re-scrape the Unicode UCD (~yearly).
+// We use build time as a coarse lastmod so Google can still de-prioritize
+// crawl when nothing has changed.
+const BUILD_TIME = new Date().toISOString();
+
 export const GET: RequestHandler = async ({ url }) => {
 	const origin = url.origin;
 	const codepoints = sitemapCharacters();
 	const urls = codepoints
-		.map((cp) => `<url><loc>${origin}/c/${cp.toString(16)}</loc></url>`)
+		.map((cp) => `<url><loc>${origin}/c/${cp.toString(16)}</loc><lastmod>${BUILD_TIME}</lastmod></url>`)
 		.join('\n');
 
 	const xml = `<?xml version="1.0" encoding="UTF-8"?>

@@ -24,6 +24,34 @@
 	<meta name="twitter:title" content="About | fancynickna.me" />
 	<meta name="twitter:description" content="Free fancy nickname generator. No signup, no ads, anonymous analytics only." />
 	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=About" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'AboutPage',
+				name: 'About fancynickna.me',
+				url: 'https://fancynickna.me/about',
+				description:
+					'fancynickna.me is a free fancy nickname generator. No signup, no ads, anonymous analytics only.',
+				mainEntity: {
+					'@type': 'WebApplication',
+					name: 'fancynickna.me',
+					applicationCategory: 'UtilitiesApplication',
+					operatingSystem: 'Web',
+					isAccessibleForFree: true,
+					offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+				}
+			},
+			{
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fancynickna.me/' },
+					{ '@type': 'ListItem', position: 2, name: 'About', item: 'https://fancynickna.me/about' }
+				]
+			}
+		]
+	})}<\/script>`}
 </svelte:head>
 
 <TopBar />

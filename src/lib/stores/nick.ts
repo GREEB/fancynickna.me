@@ -23,3 +23,4 @@ function persisted(key: string, fallback = ''): Writable<string> {
 
 export const nickName = persisted('nick.name');
 export const nickStyleId = persisted('nick.styleId');
+export const nickDecoId = persisted('nick.decoId');

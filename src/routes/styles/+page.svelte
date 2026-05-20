@@ -54,6 +54,36 @@
 	<meta name="twitter:title" content="All Fancy Text Styles | fancynickna.me" />
 	<meta name="twitter:description" content="38+ fancy nickname styles. Live preview, click to copy." />
 	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=All+Styles" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'CollectionPage',
+				name: 'All Fancy Text Styles',
+				url: 'https://fancynickna.me/styles',
+				description:
+					'Every Unicode text transform on fancynickna.me — bold, cursive, gothic, bubble, fullwidth, glitch and more.',
+				mainEntity: {
+					'@type': 'ItemList',
+					numberOfItems: styles.length,
+					itemListElement: styles.map((s, i) => ({
+						'@type': 'ListItem',
+						position: i + 1,
+						name: s.name,
+						item: `https://fancynickna.me/styles#${s.id}`
+					}))
+				}
+			},
+			{
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fancynickna.me/' },
+					{ '@type': 'ListItem', position: 2, name: 'Styles', item: 'https://fancynickna.me/styles' }
+				]
+			}
+		]
+	})}<\/script>`}
 </svelte:head>
 
 <TopBar />

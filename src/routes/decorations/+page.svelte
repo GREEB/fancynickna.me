@@ -73,6 +73,35 @@
 	<meta name="twitter:title" content="Nickname Decorations | fancynickna.me" />
 	<meta name="twitter:description" content="200+ ASCII nickname wrappers — hearts, sparkles, gothic, kawaii, MSN classics." />
 	<meta name="twitter:image" content="https://fancynickna.me/og.png?title=Decorations" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'CollectionPage',
+				name: 'Nickname Decorations',
+				url: 'https://fancynickna.me/decorations',
+				description:
+					'200+ ASCII nickname wrappers — hearts, sparkles, gothic flourishes, kawaii faces, crowns, MSN classics. Click to copy with your name.',
+				mainEntity: {
+					'@type': 'ItemList',
+					numberOfItems: decorations.length
+				}
+			},
+			{
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fancynickna.me/' },
+					{
+						'@type': 'ListItem',
+						position: 2,
+						name: 'Decorations',
+						item: 'https://fancynickna.me/decorations'
+					}
+				]
+			}
+		]
+	})}<\/script>`}
 </svelte:head>
 
 <TopBar />

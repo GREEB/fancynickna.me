@@ -19,6 +19,53 @@
 		}
 	}
 
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'DefinedTerm',
+				name: char.name.toLowerCase(),
+				alternateName: char.altNames ?? [],
+				identifier: `U+${cpHex}`,
+				description: `Unicode character ${char.char} (${char.name.toLowerCase()}), codepoint U+${cpHex}${char.block ? ` in the ${char.block} block` : ''}. Click to copy.`,
+				inDefinedTermSet: char.block
+					? { '@type': 'DefinedTermSet', name: char.block }
+					: undefined,
+				url: `https://fancynickna.me/c/${char.codepoint.toString(16)}`
+			},
+			{
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fancynickna.me/' },
+					{ '@type': 'ListItem', position: 2, name: 'Symbols', item: 'https://fancynickna.me/symbols' },
+					...(char.blockSlug
+						? [
+								{
+									'@type': 'ListItem',
+									position: 3,
+									name: char.block,
+									item: `https://fancynickna.me/symbols/block/${char.blockSlug}`
+								},
+								{
+									'@type': 'ListItem',
+									position: 4,
+									name: `U+${cpHex}`,
+									item: `https://fancynickna.me/c/${char.codepoint.toString(16)}`
+								}
+							]
+						: [
+								{
+									'@type': 'ListItem',
+									position: 3,
+									name: `U+${cpHex}`,
+									item: `https://fancynickna.me/c/${char.codepoint.toString(16)}`
+								}
+							])
+				]
+			}
+		]
+	};
+
 	const rows: { label: string; value: string }[] = [
 		{ label: 'character', value: char.char },
 		{ label: 'name', value: char.name.toLowerCase() },
@@ -53,6 +100,8 @@
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={`https://fancynickna.me/og.png?char=${encodeURIComponent(char.char)}&title=${encodeURIComponent(char.name.toLowerCase())}`} />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${JSON.stringify(structuredData)}<\/script>`}
 </svelte:head>
 
 <TopBar />

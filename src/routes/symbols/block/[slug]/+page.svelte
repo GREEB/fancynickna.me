@@ -46,6 +46,41 @@
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={`https://fancynickna.me/og.png?title=${encodeURIComponent(block.name)}`} />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'CollectionPage',
+				name: `${block.name} Unicode Block`,
+				url: `https://fancynickna.me/symbols/block/${block.slug}`,
+				description,
+				mainEntity: {
+					'@type': 'ItemList',
+					numberOfItems: chars.length,
+					itemListElement: chars.slice(0, 30).map((c, i) => ({
+						'@type': 'ListItem',
+						position: i + 1,
+						name: c.name.toLowerCase(),
+						item: `https://fancynickna.me/c/${c.codepoint.toString(16)}`
+					}))
+				}
+			},
+			{
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fancynickna.me/' },
+					{ '@type': 'ListItem', position: 2, name: 'Symbols', item: 'https://fancynickna.me/symbols' },
+					{
+						'@type': 'ListItem',
+						position: 3,
+						name: block.name,
+						item: `https://fancynickna.me/symbols/block/${block.slug}`
+					}
+				]
+			}
+		]
+	})}<\/script>`}
 </svelte:head>
 
 <TopBar />
