@@ -1,7 +1,32 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import TopBar from '$lib/components/TopBar.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	let { data } = $props();
+
+	// 346 blocks is a lot of cards to paint at once — lazy-render in batches as
+	// the user scrolls. IntersectionObserver fires when the sentinel near the
+	// bottom of the visible list enters the viewport (with a generous rootMargin
+	// so the next batch is ready before the user actually hits the end).
+	const BATCH = 80;
+	let visible = $state(Math.min(BATCH, data.blocks.length));
+	let sentinel = $state<HTMLDivElement | undefined>();
+
+	const visibleBlocks = $derived(data.blocks.slice(0, visible));
+
+	onMount(() => {
+		if (!sentinel || visible >= data.blocks.length) return;
+		const io = new IntersectionObserver(
+			(entries) => {
+				if (entries.some((e) => e.isIntersecting)) {
+					visible = Math.min(visible + BATCH, data.blocks.length);
+				}
+			},
+			{ rootMargin: '600px' }
+		);
+		io.observe(sentinel);
+		return () => io.disconnect();
+	});
 </script>
 
 <svelte:head>
@@ -49,32 +74,42 @@
 		</p>
 	</section>
 
-	<section
-		style="padding: 0 clamp(20px, 4vw, 56px) 80px; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));"
-	>
-		{#each data.blocks as b (b.id)}
-			{@const preview = data.previewByBlock[b.slug]}
-			<a
-				href={`/symbols/block/${b.slug}`}
-				class="block-card"
-				style="display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; text-decoration: none; color: var(--fg); background: var(--card);"
-			>
-				<div
-					style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); font-family: serif; font-size: 26px; line-height: 1; overflow: hidden;"
-					aria-hidden="true"
+	<section style="padding: 0 clamp(20px, 4vw, 56px) 80px;">
+		<div
+			style="display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));"
+		>
+			{#each visibleBlocks as b (b.id)}
+				{@const preview = data.previewByBlock[b.slug]}
+				<a
+					href={`/symbols/block/${b.slug}`}
+					class="block-card"
+					style="display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; text-decoration: none; color: var(--fg); background: var(--card);"
 				>
-					{preview?.char ?? '·'}
-				</div>
-				<div style="min-width: 0;">
-					<div style="font-size: 14px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis;">
-						{b.name}
+					<div
+						style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); font-family: serif; font-size: 26px; line-height: 1; overflow: hidden;"
+						aria-hidden="true"
+					>
+						{preview?.char ?? '·'}
 					</div>
-					<div style="font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); margin-top: 2px;">
-						U+{b.rangeStart.toString(16).toUpperCase()}–U+{b.rangeEnd.toString(16).toUpperCase()}
+					<div style="min-width: 0;">
+						<div style="font-size: 14px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis;">
+							{b.name}
+						</div>
+						<div style="font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); margin-top: 2px;">
+							U+{b.rangeStart.toString(16).toUpperCase()}–U+{b.rangeEnd.toString(16).toUpperCase()}
+						</div>
 					</div>
-				</div>
-			</a>
-		{/each}
+				</a>
+			{/each}
+		</div>
+		{#if visible < data.blocks.length}
+			<div
+				bind:this={sentinel}
+				style="margin-top: 32px; text-align: center; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-soft);"
+			>
+				loading {data.blocks.length - visible} more blocks…
+			</div>
+		{/if}
 	</section>
 
 	<SiteFooter />
