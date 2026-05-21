@@ -43,9 +43,13 @@ async function main() {
 		previewByBlock[c.blockSlug] = { char: c.char, codepoint: c.codepoint };
 	}
 
-	// The sitemap filter — characters in "interesting" general categories.
-	// We pre-bake this list since it's the only character sitemap query.
-	const INTERESTING = new Set(['So', 'Sm', 'Sc', 'Sk', 'Lm', 'Ll', 'Lu', 'Po', 'Pd', 'Ps', 'Pe', 'Pi', 'Pf']);
+	// Character sitemap filter — symbols only (So/Sm/Sc/Sk). Previously this
+	// also included Letters (Lu/Ll/Lm) and Punctuation (P*), but those buckets
+	// add ~5500 codepoints that nobody searches for individually — Latin/Greek/
+	// Cyrillic alphabet variants, IPA modifiers, every flavour of quote and
+	// dash. Symbols are the SEO target: hearts ♥, stars ★, arrows →, math
+	// ∞±÷√, currency $€£¥, emoji ☀☁☂. ~14k → ~8.6k URLs.
+	const INTERESTING = new Set(['So', 'Sm', 'Sc', 'Sk']);
 	const sitemapChars = characters
 		.filter((c) => c.category && INTERESTING.has(c.category))
 		.map((c) => c.codepoint);
